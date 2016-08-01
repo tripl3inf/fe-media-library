@@ -4,6 +4,7 @@ module.exports = function(options) {
 
   return function(app, data) {
     var express = require('express');
+
     var theRouter = express.Router();
 
     theRouter.get('/', function(req, res) {
@@ -14,6 +15,22 @@ module.exports = function(options) {
       var response = {};
       var allRecords = data.all(singularName);
 
+      // query album by year
+      var yearQuery = req.query.year || undefined;
+      if (yearQuery && singularName === 'album'){
+        allRecords = allRecords.filter(function(record){
+          return record.year === parseInt(yearQuery);
+        });
+      }
+
+      // query artist by location
+      var locationQuery = req.query.location || undefined;
+      if (locationQuery && singularName === 'artist'){
+        allRecords = allRecords.filter(function(artist){
+          return artist.based_in.toLowerCase() === locationQuery.toLowerCase();
+        });
+      }
+
       var records = allRecords.sort(function(a, b) {
         if (a[sort_on] > b[sort_on]) {
           return -1;
@@ -23,17 +40,17 @@ module.exports = function(options) {
           return 0;
         }
       });
-      
+
       if (sort_direction === 'desc') {
         records = records.reverse();
       }
-      
+
       var start = (page - 1) * per_page;
       var end = start + per_page;
       records = records.slice(start, end);
-      
+
       response[pluralName] = records;
-      response['meta'] = {
+      response.meta = {
         total: allRecords.length,
         total_pages: Math.ceil(allRecords.length / per_page),
       };
@@ -41,10 +58,10 @@ module.exports = function(options) {
     });
 
     theRouter.post('/', function(req, res) {
-      var requestData = JSON.parse(req.requestBody);
+      var requestData = req.body;
       var response = {};
       response[singularName] = data.save(singularName, requestData[singularName]);
-      
+
       res.json(response);
     });
 
@@ -56,10 +73,9 @@ module.exports = function(options) {
     });
 
     theRouter.put('/:id', function(req, res) {
-      var requestData = JSON.parse(req.requestBody);
+      var requestData = req.body;
       var response = {};
       response[singularName] = data.save(singularName, requestData[singularName]);
-
       res.json(response);
     });
 

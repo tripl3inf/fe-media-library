@@ -1,0 +1,10 @@
+<h2>Album Years</h2>
+<ul>
+    {{#each-in albumYears as |year total|}}
+        <li>
+            {{#link-to "year" year}}
+                {{year}} - Albums Sold: {{total}}
+            {{/link-to}}
+        </li>
+    {{/each-in}}
+</ul>

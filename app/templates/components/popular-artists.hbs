@@ -1,0 +1,9 @@
+<h2>Most popular artists (by sales)</h2>
+<ul>
+    {{#each top5BySales as |artist|}}
+        <li>
+            {{artist.name}} - {{artist.totalAlbumsSold}}
+        </li>
+    {{/each}}
+</ul>
+

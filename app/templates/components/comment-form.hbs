@@ -1,0 +1,17 @@
+<form>
+    <p>Post New Comment</p>
+
+    <label for="name">
+        {{input value=name title="name" size=30}}
+    </label>
+
+    <br>
+
+    <label for="message">
+        {{textarea value=message title="message" cols=30 rows=8}}
+    </label>
+
+    <br>
+
+    <button {{action 'submit'}}>Submit</button>
+</form>

@@ -67,6 +67,8 @@ Name | Values | Description
 `sort_direction` | `asc/desc` | Whether the mock server should sort ascending or descending
 `per_page` | `<any int>` | The number of results that should be returned per page
 `page` | `<any int>` | Page number of results to return
+`location` | `<any string>` | ARTIST ROUTE ONLY - return artists by location
+`year` | `<any string>` | ALBUM ROUTE ONLY - return albums by year
 
 ## Seed Data
 

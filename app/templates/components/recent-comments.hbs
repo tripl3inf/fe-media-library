@@ -1,0 +1,10 @@
+{{#each sortedComments as |comment|}}
+    <li>
+        <p>{{comment.author}}: <br>
+            {{comment.updatedAt}} <br>
+            {{comment.message}}</p>
+        <button {{action "deleteComment" comment}}>Delete Comment</button>
+        <hr>
+    </li>
+{{/each}}
+

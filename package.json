@@ -20,6 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "active-model-adapter": "2.1.1",
+    "body-parser": "^1.15.2",
     "broccoli-asset-rev": "^2.2.2",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.4.2",
@@ -34,15 +35,15 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-data": "^2.4.0",
+    "ember-data": "2.7.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
-    "faker": "3.1.0",
-    "loader.js": "^4.0.0",
     "express": "^4.13.3",
+    "faker": "3.1.0",
     "glob": "^4.5.3",
+    "loader.js": "^4.0.0",
     "morgan": "^1.6.1"
   }
 }

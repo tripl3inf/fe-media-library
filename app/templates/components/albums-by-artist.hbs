@@ -1,0 +1,13 @@
+{{#each-in sortedAlbums as |artist albums|}}
+    <li>
+        {{artist}}
+        <ul>
+            {{#each albums as |album|}}
+                <li>
+                    {{album}}
+                </li>
+            {{/each}}
+        </ul>
+    </li>
+{{/each-in}}
+
